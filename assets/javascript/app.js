@@ -30,6 +30,9 @@ $(() => {
     ];
 
     // Initial functions and values to be executed/displayed
+    
+    // Hide the contents of the game in the beginning 
+    $(".game").hide();
 
 
     // Every second the timeDecresed function will execute
@@ -45,8 +48,6 @@ $(() => {
         // log(seconds);
         $("#seconds").text(seconds);
         seconds--;
-
-        
     }
 
 
