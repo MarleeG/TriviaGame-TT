@@ -1,3 +1,75 @@
-body{
-    background: yellow;
+*, *::before, *::after {box-sizing: inherit;}
+html {box-sizing: border-box;}
+
+.wrapper{
+    /* position: relative; */
+
+}
+
+.container{
+    background-color: #F8F9F8;
+    border: 2px solid black;
+
+    width: 75%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    height: 95%;
+    
+}
+
+header{
+    background-color: lightcoral;
+    border: 2px solid black;
+
+    text-align: center;
+    font-size: 150px;
+    margin: 20px auto;
+}
+
+/* Timer */
+.timer{
+    background-color: hotpink;
+    border: 2px solid black;
+
+    margin: 80px auto 0 auto;
+    font-size: 40px;
+
+}
+
+/* Quiz */
+.quiz{
+    background-color: greenyellow;
+    border: 2px solid black;
+
+    margin: 80px auto;
+}
+
+.quiz, .timer, header{
+    width: 85%;
+}
+
+/* Question */
+#question{
+    background-color: khaki;
+    border: 2px solid black;
+
+    font-size: 40px;
+}
+
+/* Options */
+.options{
+    margin-top: 40px;
+    font-size: 35px;
+}
+
+.options input{
+    margin: 45px;
+}
+
+
+/* this class will center all text */
+.text-center{
+    text-align: center;
 }
