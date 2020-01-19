@@ -2,7 +2,8 @@ const log = console.log;
 // questions: https://animalcorner.co.uk/insect-quiz/
 
 $(() => {
-
+    // The user will start off with the following seconds to answer the question
+    var seconds = 5;
 
     // Stores all answers, questions, and options
     var quesstionsAndAnswers = [
@@ -28,26 +29,28 @@ $(() => {
         }
     ];
 
+    // Initial functions and values to be executed/displayed
 
-    // Next: Create a timer
-    var seconds = 5;
 
+    // Every second the timeDecresed function will execute
     var timer = setInterval(timeDecreased, 1000);
 
     // this function will execute the actions needed during the time the timer is greater or equal to 0
     function timeDecreased(){
-        // log(seconds);
-        seconds--;
+        // $("#seconds").text(seconds);
 
         // this will stop the timer once it reaches 0
         seconds === 0 ? clearInterval(timer): null;
+
+        // log(seconds);
+        $("#seconds").text(seconds);
+        seconds--;
+
+        
     }
 
 
-    // Format the UI
-
-
-    // then display timer on the UI
+    // create a start button that displays the quiz
     // display the questions on the UI
     // display options on the UI
    
