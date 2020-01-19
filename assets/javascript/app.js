@@ -36,7 +36,7 @@ $(() => {
 
     // this function will execute the actions needed during the time the timer is greater or equal to 0
     function timeDecreased(){
-        log(seconds);
+        // log(seconds);
         seconds--;
 
         // this will stop the timer once it reaches 0
