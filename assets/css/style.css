@@ -52,6 +52,7 @@ header{
     border: 2px solid black;
 
     font-size: 40px;
+    line-height: normal;
 }
 
 /* Options */
