@@ -4,6 +4,7 @@ const log = console.log;
 $(() => {
     // The user will start off with the following seconds to answer the question
     var seconds = 5;
+    var start_button_text = "Start";
 
     // Stores all answers, questions, and options
     var quesstionsAndAnswers = [
@@ -33,6 +34,7 @@ $(() => {
     
     // Hide the contents of the game in the beginning 
     $(".game").hide();
+    $("#start_game_btn").text(start_button_text);
 
 
     // Every second the timeDecresed function will execute
@@ -52,6 +54,17 @@ $(() => {
 
 
     // create a start button that displays the quiz
+    $("#start_game_btn").click(() => {
+        // On the click of the start button...
+
+        log("clicked!");
+
+        // hide start button
+        $("#start_game_btn").hide();
+
+        // display quiz
+        $(".game").show();
+    });
     // display the questions on the UI
     // display options on the UI
    
