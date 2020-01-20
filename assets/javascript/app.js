@@ -31,7 +31,8 @@ $(() => {
     ];
 
     // Initial functions and values to be executed/displayed
-    
+    var currentQuestion = 0; 
+
     // Hide the contents of the game in the beginning 
     $(".game").hide();
     $("#start_game_btn").text(start_button_text);
@@ -64,7 +65,25 @@ $(() => {
 
         // display quiz
         $(".game").show();
+
+
+        // execute a function that displays the questions
+        displayQuestion(quesstionsAndAnswers[currentQuestion]);
     });
+
+
+    // create a function that displays the first question
+    function displayQuestion(currentQuestionData){
+        var question = currentQuestionData.question;
+        var options = currentQuestionData.options;
+        var answer = currentQuestionData.answer;
+
+        // display question 
+        $("#question").text(question);
+
+        // display options
+    }
+
     // display the questions on the UI
     // display options on the UI
    
