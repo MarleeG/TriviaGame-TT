@@ -98,7 +98,6 @@ $(() => {
         }
     }
 
-
     // This event listens to any changes and updates the user's selection and assigns it to the userSelection variable
     $('form.options').on('change', (e) => {
         userSelection = e.target.value;
@@ -107,7 +106,7 @@ $(() => {
     // NEXT: CREATE A NEXT BUTTON
     // when clicked ensure it clears out the value of userSelection and set it to ""
 
-    
+
     // NEXT: GO TO THE NEXT QUESTION AUTOMATICALLY IF TIMER EQUALS 0
 
 
