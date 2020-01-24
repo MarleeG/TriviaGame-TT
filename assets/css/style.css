@@ -1,7 +1,7 @@
 *, *::before, *::after {box-sizing: inherit;}
 html {box-sizing: border-box; }
 
-body{font-family: Georgia, 'Times New Roman', Times, serif;}
+body{font-family: Georgia, 'Times New Roman', Times, serif; color: black}
 
 .container{
     background-color: #F8F9F8;
@@ -12,7 +12,7 @@ body{font-family: Georgia, 'Times New Roman', Times, serif;}
     left: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
-    height: 95%;
+    /* height: auto; */
 }
 
 header{
@@ -28,17 +28,14 @@ header{
 .timer{
     background-color: hotpink;
     border: 2px solid black;
-
     margin: 80px auto 0 auto;
     font-size: 40px;
-    height: 90px;
 }
 
 /* Quiz */
 .quiz{
     background-color: greenyellow;
     border: 2px solid black;
-
     margin: 80px auto;
 }
 
@@ -65,25 +62,12 @@ header{
     margin: 45px;
 }
 
-.start{
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    
-
-    
-}
 
 #start_game_btn{
     background-color: crimson;
     border: none;
-    font-size: 200px;
-    padding: 20px 40px;
+    font-size: 100px;
+    padding: 5px 40px;
     color: black;
 }
 
-/* this class will center all text */
-.text-center{
-    text-align: center;
-}

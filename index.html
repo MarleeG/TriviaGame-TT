@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- reset.css -->
-    <link rel="stylesheet" href="./assets/css/reset.css" type="text/css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- style.css -->
     <link rel="stylesheet" href="./assets/css/style.css" type="text/css" />
@@ -30,8 +30,8 @@
 
 
             <!-- Goal: This button when clicked will show the contents of the .game div and hide the button iteself -->
-            <div class="start">
-                <button id="start_game_btn">
+            <div class="start d-flex justify-content-center">
+                <button id="start_game_btn" class="my-4 text-center">
                 </button>
             </div>
 
@@ -49,10 +49,10 @@
                         <!-- This is a dummy question. (class: quiz) -->
                     </h4>
 
-                    <div class="options">
+                    <form class="options" name="myOptions">
                         <!-- <h1>OPTIONS</h1> -->
 
-                    </div>
+                    </form>
                 </div>
 
 

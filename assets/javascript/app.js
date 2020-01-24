@@ -33,6 +33,9 @@ $(() => {
     // Initial functions and values to be executed/displayed
     var currentQuestion = 0;
 
+    // This will assign the current value of the selected radio option to the userSelection variable
+    var userSelection = "";
+
     // Hide the contents of the game in the beginning 
     $(".game").hide();
     $("#start_game_btn").text(start_button_text);
@@ -79,19 +82,6 @@ $(() => {
         // display question 
         $("#question").text(question);
 
-        // display options
-        // log("Options::  ", options);
-
-
-        //  <input type="radio" name="option" value="Option 1">
-        //     Option 1
-        // </input>
-        // <br>
-
-        // var radio_input = $("input").attr({ type: "radio", name: "option", value: "Options" });
-        // log(radio_input);
-
-
 
         for(var a = 0; a < options.length; a++){
             var opt = options[a];
@@ -101,14 +91,26 @@ $(() => {
             // var input = "<input type='radio' name='option' value='" + opt + "'>" + opt + "</input><br/>";
 
             // this will store the radio option for each of the available options
-            var input = "<input type='radio' name='option' value='" + opt + "'>" + opt + "</input><br/>";
+            var input = "<label><input type='radio' name='option' value='" + opt + "'/>" + opt + "</label><br/>";
 
             // $("div.options").append(radio_input);
-            $("div.options").append(input);
+            $(".options").append(input);
         }
-
-
     }
+
+
+    // This event listens to any changes and updates the user's selection and assigns it to the userSelection variable
+    $('form.options').on('change', (e) => {
+        userSelection = e.target.value;
+    });
+
+    // NEXT: CREATE A NEXT BUTTON
+    // when clicked ensure it clears out the value of userSelection and set it to ""
+
+    // NEXT: GO TO THE NEXT QUESTION AUTOMATICALLY IF TIMER EQUALS 0
+
+
+
 
     // display the questions on the UI
     // display options on the UI
