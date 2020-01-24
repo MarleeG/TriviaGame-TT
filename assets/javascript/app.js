@@ -107,6 +107,7 @@ $(() => {
     // NEXT: CREATE A NEXT BUTTON
     // when clicked ensure it clears out the value of userSelection and set it to ""
 
+    
     // NEXT: GO TO THE NEXT QUESTION AUTOMATICALLY IF TIMER EQUALS 0
 
 
