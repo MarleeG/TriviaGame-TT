@@ -36,7 +36,8 @@ header{
 .quiz{
     background-color: greenyellow;
     border: 2px solid black;
-    margin: 80px auto;
+    margin: 80px auto 20px auto;
+    height: auto;
 }
 
 .quiz, .timer, header{
