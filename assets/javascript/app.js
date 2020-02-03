@@ -7,7 +7,7 @@ $(() => {
     var start_button_text = "Start";
 
     // Stores all answers, questions, and options
-    var quesstionsAndAnswers = [
+    var questionsAndAnswers = [
         {
             question: "Ants eat a sweet fluid called honey dew, where does this fluid come from?",
             options: ["Flowers", "Aphids", "Trees"],
@@ -69,12 +69,13 @@ $(() => {
 
 
         // execute a function that displays the questions
-        displayQuestion(quesstionsAndAnswers[currentQuestion]);
+        displayQuestion(questionsAndAnswers[currentQuestion]);
     });
 
 
     // create a function that displays the first question
     function displayQuestion(currentQuestionData) {
+        $('.options').empty();
         var question = currentQuestionData.question;
         var options = currentQuestionData.options;
         var answer = currentQuestionData.answer;
@@ -83,7 +84,7 @@ $(() => {
         $("#question").text(question);
 
 
-        for(var a = 0; a < options.length; a++){
+        for (var a = 0; a < options.length; a++) {
             var opt = options[a];
 
             // other ways to qrite the input variable: 
@@ -107,13 +108,28 @@ $(() => {
     // NEXT: CREATE A NEXT BUTTON - DONE
     // NEXT: Next button created. Add button lister to button#next-question-btn - DONE
 
+    // this event listener will listen to see if the user wants to proceed to the next question
     $('button#next-question-btn').bind('click', e => {
         log('next question clicked');
+        currentQuestion++;
 
-        // NEXT: DISPLAY NEXT QUESTION
+        // 
+        if (currentQuestion === questionsAndAnswers.length) {
+
+            // $('.game').hide();
+            $('.timer').hide();
+            $('.quiz').hide();
+            $('.game').append(`<p class="text-center">Game is over show scores</p>`)
+        } else {
+            // NEXT: DISPLAY NEXT QUESTION
+            // this function will display the current questions data pulled from questionsAndAnswers array
+            displayQuestion(questionsAndAnswers[currentQuestion])
+        }
+
+
 
     });
-    
+
 
     // when clicked ensure it clears out the value of userSelection and set it to ""
 
