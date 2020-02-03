@@ -10,6 +10,8 @@ $(() => {
     // Every second the timeDecresed function will execute
     var timer;
 
+    var userAnswers = [];
+
     // Stores all answers, questions, and options
     var questionsAndAnswers = [
         {
@@ -50,7 +52,7 @@ $(() => {
 
 
         $("#seconds").text(seconds);
-        log(seconds);
+        // log(seconds);
 
         seconds--;
         // this will stop the timer once it reaches 0
@@ -87,9 +89,17 @@ $(() => {
         displayQuestion(questionsAndAnswers[currentQuestion]);
     });
 
+    function updateScores(){
+        userAnswers.push(userSelection);
+    }
+
     function nextQuestion() {
         seconds = 5;
         $("#seconds").text(seconds);
+
+        updateScores();
+        // updates the option the user has selected as an empty string for the next question
+        userSelection = "";
 
 
         currentQuestion++;
@@ -98,14 +108,21 @@ $(() => {
             // hide elements that are no longer needed to be shown at the end of the game
             $('.timer').hide();
             $('.quiz').hide();
-            $('.game').append(`<p class="text-center">Game is over show scores</p>`)
+            $('.game').append(`<p class="text-center">Game is over show scores</p>`);
+            log(userAnswers);
         } else {
+
+           
+
             // updates 
             timer = setInterval(timeDecreased, 1000);
             // NEXT: DISPLAY NEXT QUESTION
             // this function will display the current questions data pulled from questionsAndAnswers array
             displayQuestion(questionsAndAnswers[currentQuestion]);
         }
+
+
+
     }
 
     // create a function that displays the first question
@@ -137,7 +154,6 @@ $(() => {
     // This event listens to any changes and updates the user's selection and assigns it to the userSelection variable
     $('form.options').on('change', (e) => {
         userSelection = e.target.value;
-        log(userSelection);
     });
 
     // NEXT: CREATE A NEXT BUTTON - DONE
@@ -145,7 +161,6 @@ $(() => {
 
     // this event listener will listen to see if the user wants to proceed to the next question
     $('button#next-question-btn').bind('click', e => {
-        log('next question clicked');
         nextQuestion();
     });
 
