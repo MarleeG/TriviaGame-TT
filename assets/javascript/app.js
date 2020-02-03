@@ -3,8 +3,12 @@ const log = console.log;
 
 $(() => {
     // The user will start off with the following seconds to answer the question
-    var seconds = 5;
+    var seconds;
+
     var start_button_text = "Start";
+
+    // Every second the timeDecresed function will execute
+    var timer;
 
     // Stores all answers, questions, and options
     var questionsAndAnswers = [
@@ -41,19 +45,24 @@ $(() => {
     $("#start_game_btn").text(start_button_text);
 
 
-    // Every second the timeDecresed function will execute
-    var timer = setInterval(timeDecreased, 1000);
-
     // this function will execute the actions needed during the time the timer is greater or equal to 0
     function timeDecreased() {
-        // $("#seconds").text(seconds);
 
-        // this will stop the timer once it reaches 0
-        seconds === 0 ? clearInterval(timer) : null;
 
-        // log(seconds);
         $("#seconds").text(seconds);
+        log(seconds);
+
         seconds--;
+        // this will stop the timer once it reaches 0
+        //  seconds === 0 ? clearInterval(timer) : null;
+        if ($('#seconds').text() == "0") {
+            clearInterval(timer);
+            // clearTimeout
+            nextQuestion();
+
+        }
+        // play game and see fix the issue in the UI.
+        // change the question in the UI once seconds equals 0
     }
 
 
@@ -67,11 +76,37 @@ $(() => {
         // display quiz
         $(".game").show();
 
+        seconds = 5;
+
+
+        // timer begins and deceases seconds by 1 every second
+        timer = setInterval(timeDecreased, 1000);
+
 
         // execute a function that displays the questions
         displayQuestion(questionsAndAnswers[currentQuestion]);
     });
 
+    function nextQuestion() {
+        seconds = 5;
+        $("#seconds").text(seconds);
+
+
+        currentQuestion++;
+        // if the currentQuestion is the same value as the length then there are no more questions to display.
+        if (currentQuestion === questionsAndAnswers.length) {
+            // hide elements that are no longer needed to be shown at the end of the game
+            $('.timer').hide();
+            $('.quiz').hide();
+            $('.game').append(`<p class="text-center">Game is over show scores</p>`)
+        } else {
+            // updates 
+            timer = setInterval(timeDecreased, 1000);
+            // NEXT: DISPLAY NEXT QUESTION
+            // this function will display the current questions data pulled from questionsAndAnswers array
+            displayQuestion(questionsAndAnswers[currentQuestion]);
+        }
+    }
 
     // create a function that displays the first question
     function displayQuestion(currentQuestionData) {
@@ -111,23 +146,7 @@ $(() => {
     // this event listener will listen to see if the user wants to proceed to the next question
     $('button#next-question-btn').bind('click', e => {
         log('next question clicked');
-        currentQuestion++;
-
-        // 
-        if (currentQuestion === questionsAndAnswers.length) {
-
-            // $('.game').hide();
-            $('.timer').hide();
-            $('.quiz').hide();
-            $('.game').append(`<p class="text-center">Game is over show scores</p>`)
-        } else {
-            // NEXT: DISPLAY NEXT QUESTION
-            // this function will display the current questions data pulled from questionsAndAnswers array
-            displayQuestion(questionsAndAnswers[currentQuestion])
-        }
-
-
-
+        nextQuestion();
     });
 
 
