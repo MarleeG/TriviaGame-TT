@@ -104,7 +104,15 @@ $(() => {
         log(userSelection);
     });
 
-    // NEXT: CREATE A NEXT BUTTON
+    // NEXT: CREATE A NEXT BUTTON - DONE
+    // NEXT: Next button created. Add button lister to button#next-question-btn - DONE
+
+    $('button#next-question-btn').bind('click', e => {
+        log('next question clicked');
+
+        // NEXT: DISPLAY NEXT QUESTION
+
+    });
     
 
     // when clicked ensure it clears out the value of userSelection and set it to ""
