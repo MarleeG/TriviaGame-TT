@@ -45,6 +45,7 @@ $(() => {
     // Hide the contents of the game in the beginning 
     $(".game").hide();
     $("#start_game_btn").text(start_button_text);
+    $('#scores').hide();
 
 
     // this function will execute the actions needed during the time the timer is greater or equal to 0
@@ -58,8 +59,6 @@ $(() => {
         // this will stop the timer once it reaches 0
         //  seconds === 0 ? clearInterval(timer) : null;
         if ($('#seconds').text() == "0") {
-            clearInterval(timer);
-            // clearTimeout
             nextQuestion();
 
         }
@@ -89,18 +88,34 @@ $(() => {
         displayQuestion(questionsAndAnswers[currentQuestion]);
     });
 
-    function updateScores(){
+    function updateScores() {
         userAnswers.push(userSelection);
     }
 
+    function displayScores() {
+        $('#scores').show();
+        let table_row = $('<tr>');
+
+        userAnswers.forEach((val, idx) => {
+            log(`${idx} :: ${val}`);
+
+            $('table#score-table').append(table_row.append(
+                `
+                    <td>${questionsAndAnswers[idx].question}</td>
+                    <td>${questionsAndAnswers[idx].answer}</td>
+                    <td>${val}</td>
+                    <td>${val === questionsAndAnswers[idx].answer ? "25 Points": "0 points"}</td>
+                `
+            ));
+
+            table_row = $('<tr>');
+        });
+
+    }
+
     function nextQuestion() {
-        seconds = 5;
-        $("#seconds").text(seconds);
-
+        clearInterval(timer);
         updateScores();
-        // updates the option the user has selected as an empty string for the next question
-        userSelection = "";
-
 
         currentQuestion++;
         // if the currentQuestion is the same value as the length then there are no more questions to display.
@@ -108,15 +123,21 @@ $(() => {
             // hide elements that are no longer needed to be shown at the end of the game
             $('.timer').hide();
             $('.quiz').hide();
-            $('.game').append(`<p class="text-center">Game is over show scores</p>`);
-            log(userAnswers);
-        } else {
+            // DISPLAY SCORES
 
-           
+            displayScores();
+            log(userAnswers);
+
+        } else {
+            // updates the option the user has selected as an empty string for the next question
+            userSelection = "";
+
+            seconds = 5;
+            $("#seconds").text(seconds);
 
             // updates 
             timer = setInterval(timeDecreased, 1000);
-            // NEXT: DISPLAY NEXT QUESTION
+
             // this function will display the current questions data pulled from questionsAndAnswers array
             displayQuestion(questionsAndAnswers[currentQuestion]);
         }
@@ -124,6 +145,7 @@ $(() => {
 
 
     }
+
 
     // create a function that displays the first question
     function displayQuestion(currentQuestionData) {
@@ -134,7 +156,6 @@ $(() => {
 
         // display question 
         $("#question").text(question);
-
 
         for (var a = 0; a < options.length; a++) {
             var opt = options[a];
@@ -156,25 +177,10 @@ $(() => {
         userSelection = e.target.value;
     });
 
-    // NEXT: CREATE A NEXT BUTTON - DONE
-    // NEXT: Next button created. Add button lister to button#next-question-btn - DONE
-
     // this event listener will listen to see if the user wants to proceed to the next question
     $('button#next-question-btn').bind('click', e => {
         nextQuestion();
     });
 
-
-    // when clicked ensure it clears out the value of userSelection and set it to ""
-
-
-    // NEXT: GO TO THE NEXT QUESTION AUTOMATICALLY IF TIMER EQUALS 0
-
-
-
-
     // display the questions on the UI
-    // display options on the UI
-
-
 }); 
