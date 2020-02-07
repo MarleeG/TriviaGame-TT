@@ -12,6 +12,8 @@ $(() => {
 
     var userAnswers = [];
 
+    var final_score = 0;
+
     // Stores all answers, questions, and options
     var questionsAndAnswers = [
         {
@@ -46,6 +48,7 @@ $(() => {
     $(".game").hide();
     $("#start_game_btn").text(start_button_text);
     $('#scores').hide();
+    $("div.final-score").hide();
 
 
     // this function will execute the actions needed during the time the timer is greater or equal to 0
@@ -96,20 +99,30 @@ $(() => {
         $('#scores').show();
         let table_row = $('<tr>');
 
+        let question_point = (1/questionsAndAnswers.length) * 100;
+        log(question_point);
+
         userAnswers.forEach((val, idx) => {
-            log(`${idx} :: ${val}`);
+            if(val === questionsAndAnswers[idx].answer){
+                final_score += 25;
+            }
 
             $('table#score-table').append(table_row.append(
                 `
                     <td>${questionsAndAnswers[idx].question}</td>
                     <td>${questionsAndAnswers[idx].answer}</td>
                     <td>${val}</td>
-                    <td>${val === questionsAndAnswers[idx].answer ? "25 Points": "0 points"}</td>
+                    <td>
+                     ${val === questionsAndAnswers[idx].answer ? question_point + " points": "0 points"}
+                    </td>
                 `
             ));
 
             table_row = $('<tr>');
         });
+
+        $("p#final-score").text(final_score);
+        $("div.final-score").show();
 
     }
 
@@ -160,10 +173,6 @@ $(() => {
         for (var a = 0; a < options.length; a++) {
             var opt = options[a];
 
-            // other ways to qrite the input variable: 
-            // var input = `<input type="radio" name="option" value=${opt}>${opt}</input><br/>`;
-            // var input = "<input type='radio' name='option' value='" + opt + "'>" + opt + "</input><br/>";
-
             // this will store the radio option for each of the available options
             var input = "<label><input type='radio' name='option' value='" + opt + "'/>" + opt + "</label><br/>";
 
@@ -182,5 +191,9 @@ $(() => {
         nextQuestion();
     });
 
-    // display the questions on the UI
+    // Restarts Game
+    $("button#restart-game-btn").click(() => {
+        location.reload();
+    });
+
 }); 
