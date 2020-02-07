@@ -40,7 +40,7 @@
             <div class="game">
                 <!-- Timer -->
                 <div class="timer text-center">
-                    <p>Time Remaining (class: timer)</p>
+                    <p>Time Remaining:</p>
                     <p id="seconds"></p>
                 </div>
 
@@ -65,7 +65,7 @@
 
                 </div>
 
-                <div id="scores">
+                <div id="scores" class="text-center">
                     <table id='score-table'>
                         <tr>
                             <th>Question</th>
@@ -76,6 +76,19 @@
 
                     </table>
                 </div>
+
+                <br />
+
+
+                <!-- Final Scores -->
+                <div class="text-center mx-auto final-score my-3">
+                    <strong class="text-center mx-auto">
+                        Scores:
+                        <p id="final-score"></p>
+                    </strong>
+                    <button type="button" class="btn btn-lg btn-dark" id="restart-game-btn">Restart?</button>
+                </div>
+
 
 
 
